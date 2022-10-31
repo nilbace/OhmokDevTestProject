@@ -9,16 +9,17 @@ using TMPro;
 public class NMver2 : MonoBehaviourPunCallbacks
 {
     public TMP_InputField NickNameInput;
-    public GameObject DisconnectPanel;
+    public GameObject DisconnectPannel;
     public GameObject RespawnPanel;
+    public TextMeshProUGUI Status;
 
 
-    void Awake()
+
+     void Awake()
     {
         Screen.SetResolution(960, 540, false);
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
-        if(PhotonNetwork.IsConnected == true) print("Hello");
     }
 
     public void Connect() => PhotonNetwork.ConnectUsingSettings();
@@ -31,14 +32,11 @@ public class NMver2 : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        DisconnectPanel.SetActive(false);
+        DisconnectPannel.SetActive(false);
         StartCoroutine("DestroyBullet");
         Spawn();
     }
-    public override void OnJoinedLobby()
-    {
-        base.OnJoinedLobby();
-    }
+
     IEnumerator DestroyBullet()
     {
         yield return new WaitForSeconds(0.2f);
@@ -47,16 +45,19 @@ public class NMver2 : MonoBehaviourPunCallbacks
 
     public void Spawn()
     {
-        PhotonNetwork.Instantiate("Player", new Vector3(Random.Range(-6f, 19f), 4, 0), Quaternion.identity);
+        PhotonNetwork.Instantiate("Player", new Vector3(0, 4, 0), Quaternion.identity);
         RespawnPanel.SetActive(false);
     }
 
-    void Update() { if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected) PhotonNetwork.Disconnect(); }
+    void Update() 
+    { 
+        if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected) PhotonNetwork.Disconnect(); 
+        Status.text=PhotonNetwork.NetworkClientState.ToString();
+    }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        DisconnectPanel.SetActive(true);
+        DisconnectPannel.SetActive(true);
         RespawnPanel.SetActive(false);
     }
 }
-

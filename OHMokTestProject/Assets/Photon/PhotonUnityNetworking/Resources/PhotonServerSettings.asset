@@ -42,6 +42,9 @@ MonoBehaviour:
   - DestroyRPC
   - FlipXRPC
   - JumpRPC
+  - DirRPC
+  - changeTurn
+  - setCoinResult
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
