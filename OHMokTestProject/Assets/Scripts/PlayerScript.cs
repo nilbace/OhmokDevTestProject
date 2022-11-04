@@ -12,21 +12,25 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     public SpriteRenderer SR;
     public PhotonView PV;
     public TextMeshProUGUI NickNameText;
-    public Slider HealthImage;
+    public Image HealthImage;
 
     bool isGround;
     Vector3 curPos;
 
 
 
-     void Awake()
+    void Awake()
     {
         // 닉네임
         NickNameText.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
         NickNameText.color = PV.IsMine ? Color.green : Color.red;
+
+        if (PV.IsMine)
+        {
+            
+        }
     }
 
-  
 
     void Update()
     {
@@ -72,8 +76,8 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
 
     public void Hit()
     {
-        HealthImage.value -= 0.1f;
-        if (HealthImage.value <= 0)
+        HealthImage.fillAmount -= 0.1f;
+        if (HealthImage.fillAmount <= 0)
         {
             GameObject.Find("Canvas").transform.Find("RespawnPanel").gameObject.SetActive(true);
             PV.RPC("DestroyRPC", RpcTarget.AllBuffered); // AllBuffered로 해야 제대로 사라져 복제버그가 안 생긴다
@@ -89,12 +93,12 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(transform.position);
-            stream.SendNext(HealthImage.value);
+            stream.SendNext(HealthImage.fillAmount);
         }
         else
         {
             curPos = (Vector3)stream.ReceiveNext();
-            HealthImage.value = (float)stream.ReceiveNext();
+            HealthImage.fillAmount = (float)stream.ReceiveNext();
         }
     }
 }
