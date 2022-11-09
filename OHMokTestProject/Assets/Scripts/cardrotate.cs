@@ -29,7 +29,7 @@ public class cardrotate : MonoBehaviour
     }
 
     void move() {
-        this.transform.DOMove(new Vector3(0,-4,0),2);
+        this.transform.DOMove(new Vector3(0,-40,0),2);
     }
     void rotate() {
         if(front==false) {
