@@ -29,18 +29,18 @@ public class cardrotate : MonoBehaviour
     }
 
     void move() {
-        this.transform.DOMove(new Vector3(0,-40,0),2);
+        this.transform.DOMove(new Vector3(0,700,0),0.75f).SetEase(Ease.OutQuad);
     }
     void rotate() {
         if(front==false) {
-            cardback.transform.DORotate(new Vector3(0,180,0),1.5f);
-            cardfront.transform.DORotate(new Vector3(0,180,0),1.5f);
-            Invoke("layerchange",0.45f);
+            cardback.transform.DORotate(new Vector3(0,180,0),0.5f);
+            cardfront.transform.DORotate(new Vector3(0,180,0),0.5f);
+            Invoke("layerchange", 0.2f);
             front=true;}
         else {
-            cardback.transform.DORotate(new Vector3(0,360,0),1.5f);
-            cardfront.transform.DORotate(new Vector3(0,360,0),1.5f);
-            Invoke("layerchange",0.45f);
+            cardback.transform.DORotate(new Vector3(0,360,0),0.5f);
+            cardfront.transform.DORotate(new Vector3(0,360,0),0.5f);
+            Invoke("layerchange", 0.2f);
             front=false;}
         }
     
