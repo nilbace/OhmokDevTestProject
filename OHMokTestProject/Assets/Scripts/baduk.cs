@@ -6,20 +6,27 @@ using UnityEngine;
 public class baduk : MonoBehaviour
 {
     public ParticleSystem part;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     void OnMouseDown() {
-        this.gameObject.SetActive(false);
-        part.gameObject.SetActive(true);
+        StartCoroutine(destroyBadukDole());
     }
+
+    
+
+    IEnumerator destroyBadukDole()
+    {
+        var particleObject = Instantiate(part);
+        Color spritecolor = gameObject.GetComponent<SpriteRenderer>().color;
+        spritecolor.a = 0f;
+        gameObject.GetComponent<SpriteRenderer>().color = spritecolor;
+
+        yield return new WaitForSeconds(2f);
+        
+        Destroy(particleObject);
+        Destroy(gameObject);
+        
+    }
+
+    
 }
