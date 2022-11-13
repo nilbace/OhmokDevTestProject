@@ -19,6 +19,7 @@ public class baduk : MonoBehaviour
     }
 
     void OnMouseDown() {
-        Debug.Log("onmouse");
+        this.gameObject.SetActive(false);
+        part.gameObject.SetActive(true);
     }
 }
