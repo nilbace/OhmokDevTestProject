@@ -29,7 +29,7 @@ public class cardrotate : MonoBehaviour
     }
 
     void move() {
-        this.transform.DOMove(new Vector3(0,700,0),0.75f).SetEase(Ease.OutQuad);
+        this.transform.DOMove(this.transform.position+new Vector3(0,700,0),0.75f).SetEase(Ease.OutQuad);
     }
     void rotate() {
         if(front==false) {
@@ -40,7 +40,7 @@ public class cardrotate : MonoBehaviour
         else {
             cardback.transform.DORotate(new Vector3(0,360,0),0.5f);
             cardfront.transform.DORotate(new Vector3(0,360,0),0.5f);
-            Invoke("layerchange", 0.2f);
+            Invoke("layerchange", 0.25f);
             front=false;}
         }
     

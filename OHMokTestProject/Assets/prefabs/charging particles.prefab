@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4823213450280286}
   - component: {fileID: 198942143346707584}
   - component: {fileID: 199101670265800932}
+  - component: {fileID: 5210969193871490642}
   m_Layer: 0
   m_Name: Particle attractor
   m_TagString: Untagged
@@ -4717,6 +4718,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5210969193871490642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523531959792692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7dd04ae0598552469524c2d7954ed3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 530, y: 940, z: 0}
+  speed: 5
 --- !u!1 &1799332239858732
 GameObject:
   m_ObjectHideFlags: 0
@@ -4728,7 +4743,6 @@ GameObject:
   - component: {fileID: 4287634066651340}
   - component: {fileID: 199422531685770052}
   - component: {fileID: 198347416387608602}
-  - component: {fileID: 4313627672134163482}
   m_Layer: 0
   m_Name: charging particles
   m_TagString: Untagged
@@ -4832,14 +4846,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799332239858732}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 0.5
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 1
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -9543,17 +9557,3 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &4313627672134163482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799332239858732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7dd04ae0598552469524c2d7954ed3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {x: 0, y: 0, z: 0}
-  speed: 5
